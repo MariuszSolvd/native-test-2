@@ -9,7 +9,7 @@ public abstract class LoginPage extends AbstractPage {
         super(driver);
     }
 
-    public abstract void login(String username, String password);
+    public abstract ProductPage login(String username, String password);
 
     public abstract boolean isErrorVisible();
 }
