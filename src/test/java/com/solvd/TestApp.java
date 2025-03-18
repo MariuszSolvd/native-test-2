@@ -11,10 +11,10 @@ import static org.testng.Assert.*;
 public class TestApp extends AbstractTest {
 
     @Test
-    public void shouldNotLogin() {
+    public void shouldNotLoginIncorrectCredentials() {
         LoginPage loginPage = initPage(getDriver(), LoginPage.class);
         loginPage.login("standard", "wrong");
-        assertTrue(loginPage.isErrorVisible());
+        assertEquals(loginPage.getErrorName(), "Username and password do not match any user in this service.");
     }
 
     @Test
@@ -22,5 +22,12 @@ public class TestApp extends AbstractTest {
         LoginPage loginPage = initPage(getDriver(), LoginPage.class);
         ProductPage productPage = loginPage.login(R.TESTDATA.get("user.standard"), R.TESTDATA.get("user.password"));
         assertTrue(productPage.isPageOpened());
+    }
+
+    @Test
+    public void shouldNotLoginNoCredentials() {
+        LoginPage loginPage = initPage(getDriver(), LoginPage.class);
+        loginPage.clickLoginButton();
+        assertEquals(loginPage.getErrorName(), "Username is required");
     }
 }
