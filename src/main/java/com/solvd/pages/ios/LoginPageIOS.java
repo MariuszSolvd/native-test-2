@@ -16,6 +16,8 @@ public class LoginPageIOS extends LoginPage {
     private ExtendedWebElement passwordInput;
     @ExtendedFindBy(iosPredicate = "name == \"test-LOGIN\"")
     private ExtendedWebElement buttonLogin;
+    @ExtendedFindBy(iosPredicate = "name == \"test-Error message\"")
+    private ExtendedWebElement errorPopup;
 
     public LoginPageIOS(WebDriver driver) {
         super(driver);
@@ -26,6 +28,11 @@ public class LoginPageIOS extends LoginPage {
         usernameInput.type(username);
         passwordInput.type(password);
         buttonLogin.click();
+    }
+
+    @Override
+    public boolean isErrorVisible() {
+        return errorPopup.isVisible();
     }
 
 

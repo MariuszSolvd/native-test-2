@@ -11,4 +11,5 @@ public abstract class LoginPage extends AbstractPage {
 
     public abstract void login(String username, String password);
 
+    public abstract boolean isErrorVisible();
 }
