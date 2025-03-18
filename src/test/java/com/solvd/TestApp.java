@@ -25,9 +25,18 @@ public class TestApp extends AbstractTest {
     }
 
     @Test
-    public void shouldNotLoginNoCredentials() {
+    public void shouldNotLoginNoUsername() {
         LoginPage loginPage = initPage(getDriver(), LoginPage.class);
+        loginPage.inputPassword("password");
         loginPage.clickLoginButton();
         assertEquals(loginPage.getErrorName(), "Username is required");
+    }
+
+    @Test
+    public void shouldNotLoginNoPassword() {
+        LoginPage loginPage = initPage(getDriver(), LoginPage.class);
+        loginPage.inputUsername("user");
+        loginPage.clickLoginButton();
+        assertEquals(loginPage.getErrorName(), "Password is required");
     }
 }
