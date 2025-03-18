@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class TestApp extends AbstractTest {
+public class TestLogin extends AbstractTest {
 
     @Test
     public void shouldNotLoginIncorrectCredentials() {
