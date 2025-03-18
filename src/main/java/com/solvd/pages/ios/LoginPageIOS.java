@@ -33,8 +33,13 @@ public class LoginPageIOS extends LoginPage {
     }
 
     @Override
-    public boolean isErrorVisible() {
-        return errorPopup.isVisible();
+    public void clickLoginButton() {
+        buttonLogin.click();
+    }
+
+    @Override
+    public String getErrorName() {
+        return errorPopup.getAttribute("label");
     }
 
 

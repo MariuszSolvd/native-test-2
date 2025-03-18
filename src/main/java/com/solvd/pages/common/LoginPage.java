@@ -11,5 +11,7 @@ public abstract class LoginPage extends AbstractPage {
 
     public abstract ProductPage login(String username, String password);
 
-    public abstract boolean isErrorVisible();
+    public abstract void clickLoginButton();
+
+    public abstract String getErrorName();
 }
