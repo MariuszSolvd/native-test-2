@@ -13,5 +13,9 @@ public abstract class LoginPage extends AbstractPage {
 
     public abstract void clickLoginButton();
 
+    public abstract void inputUsername(String username);
+
+    public abstract void inputPassword(String password);
+
     public abstract String getErrorName();
 }

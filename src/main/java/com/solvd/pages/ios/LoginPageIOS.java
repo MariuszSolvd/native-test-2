@@ -12,9 +12,9 @@ import org.openqa.selenium.WebDriver;
 public class LoginPageIOS extends LoginPage {
 
     @ExtendedFindBy(iosPredicate = "name == \"test-Username\"")
-    private ExtendedWebElement usernameInput;
+    private ExtendedWebElement usernameForm;
     @ExtendedFindBy(iosPredicate = "name == \"test-Password\"" )
-    private ExtendedWebElement passwordInput;
+    private ExtendedWebElement passwordForm;
     @ExtendedFindBy(iosPredicate = "name == \"test-LOGIN\"")
     private ExtendedWebElement buttonLogin;
     @ExtendedFindBy(iosPredicate = "name == \"test-Error message\"")
@@ -26,8 +26,8 @@ public class LoginPageIOS extends LoginPage {
 
     @Override
     public ProductPage login(String username, String password) {
-        usernameInput.type(username);
-        passwordInput.type(password);
+        usernameForm.type(username);
+        passwordForm.type(password);
         buttonLogin.click();
         return initPage(getDriver(), ProductPage.class);
     }
@@ -35,6 +35,16 @@ public class LoginPageIOS extends LoginPage {
     @Override
     public void clickLoginButton() {
         buttonLogin.click();
+    }
+
+    @Override
+    public void inputUsername(String username) {
+        usernameForm.type(username);
+    }
+
+    @Override
+    public void inputPassword(String password) {
+        passwordForm.type(password);
     }
 
     @Override
