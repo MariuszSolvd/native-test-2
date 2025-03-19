@@ -1,6 +1,7 @@
 package com.solvd;
 
 import com.solvd.pages.common.LoginPage;
+import com.solvd.pages.common.MenuPage;
 import com.solvd.pages.common.ProductPage;
 import com.zebrunner.carina.core.AbstractTest;
 import com.zebrunner.carina.utils.R;
@@ -45,5 +46,14 @@ public class TestLogin extends AbstractTest {
         LoginPage loginPage = initPage(getDriver(), LoginPage.class);
         loginPage.login(R.TESTDATA.get("user.locked"), R.TESTDATA.get("user.password"));
         assertEquals(loginPage.getErrorName(), "Sorry, this user has been locked out.");
+    }
+
+    @Test
+    public void shouldLogout() {
+        LoginPage loginPage = initPage(getDriver(), LoginPage.class);
+        ProductPage productPage = loginPage.login(R.TESTDATA.get("user.standard"), R.TESTDATA.get("user.password"));
+        MenuPage menuPage = productPage.getHeader().clickHamburgerMenu();
+        loginPage = menuPage.clickLogout();
+        assertTrue(loginPage.isPageOpened());
     }
 }
