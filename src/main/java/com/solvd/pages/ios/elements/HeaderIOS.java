@@ -1,5 +1,6 @@
 package com.solvd.pages.ios.elements;
 
+import com.solvd.pages.common.MenuPage;
 import com.solvd.pages.common.elements.Header;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -23,8 +24,9 @@ public class HeaderIOS extends Header {
 
 
     @Override
-    public void clickHamburgerMenu() {
+    public MenuPage clickHamburgerMenu() {
         clickIOS(hamburgerMenu);
+        return initPage(getDriver(), MenuPage.class);
     }
 
     @Override
@@ -33,7 +35,6 @@ public class HeaderIOS extends Header {
     }
 
     private void clickIOS(ExtendedWebElement element) {
-        System.out.println(element);
         Point point = element.getLocation();
         Dimension size = element.getSize();
         tap(point.getX() + size.getWidth() / 2, point.getY() + size.getHeight() / 2 + 4);

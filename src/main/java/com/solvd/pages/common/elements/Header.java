@@ -1,5 +1,6 @@
 package com.solvd.pages.common.elements;
 
+import com.solvd.pages.common.MenuPage;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
@@ -12,7 +13,7 @@ public abstract class Header extends AbstractUIObject implements IMobileUtils {
         super(driver, searchContext);
     }
 
-    public abstract void clickHamburgerMenu();
+    public abstract MenuPage clickHamburgerMenu();
 
     public abstract void clickCart();
 }
