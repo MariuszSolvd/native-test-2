@@ -22,6 +22,7 @@ public class LoginPageIOS extends LoginPage {
 
     public LoginPageIOS(WebDriver driver) {
         super(driver);
+        setUiLoadedMarker(buttonLogin);
     }
 
     @Override
