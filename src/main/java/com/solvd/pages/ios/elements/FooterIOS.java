@@ -23,22 +23,9 @@ public class FooterIOS extends Footer {
     }
 
     @Override
-    public void clickTwitterButton() {
-        twitterButton.click();
+    public ExtendedWebElement getTwitterLogo() {
+        return twitterButton;
     }
 
-    @Override
-    public void clickFBButton() {
-        fbButton.click();
-    }
 
-    @Override
-    public void clickGoogleButton() {
-        googleButton.click();
-    }
-
-    @Override
-    public void clickLinkedinButton() {
-        linkedinButton.click();
-    }
 }
