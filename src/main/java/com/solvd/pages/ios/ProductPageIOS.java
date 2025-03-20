@@ -26,6 +26,8 @@ public class ProductPageIOS extends ProductPage {
     private ExtendedWebElement productText;
     @ExtendedFindBy(iosPredicate = "name == \"test-Item\"")
     private List<ProductIOS> products;
+    @ExtendedFindBy(iosPredicate = "name == \"test-Modal Selector Button\"")
+    private ExtendedWebElement selectorButton;
 
     public ProductPageIOS(WebDriver driver) {
         super(driver);
@@ -39,11 +41,16 @@ public class ProductPageIOS extends ProductPage {
     }
 
     @Override
+    public void clickSelectorButton() {
+        selectorButton.click();
+    }
+
+    @Override
     protected void lazyLoad() {
         int i = 0;
-        while (!footerIOS.isDisplayed()) {
+        while (i < products.size()) {
             swipe(products.get(i));
-            i += 2;
+            i++;
         }
     }
 

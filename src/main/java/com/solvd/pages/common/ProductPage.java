@@ -14,5 +14,7 @@ public abstract class ProductPage extends CommonPage implements IMobileUtils {
 
     public abstract List<? extends Product> getProducts();
 
+    public abstract void clickSelectorButton();
+
     protected abstract void lazyLoad();
 }
