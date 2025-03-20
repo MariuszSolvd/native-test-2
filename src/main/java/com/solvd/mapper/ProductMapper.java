@@ -14,6 +14,7 @@ public final class ProductMapper {
     }
 
     public static ProductEnt mapToProductEnt (Product product) {
+        product.swipeToProduct();
         return new ProductEnt(product.getNameText(), product.getPrice());
     }
 }
