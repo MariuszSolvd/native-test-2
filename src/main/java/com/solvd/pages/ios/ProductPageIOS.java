@@ -37,7 +37,6 @@ public class ProductPageIOS extends ProductPage {
 
     @Override
     public List<? extends Product> getProducts() {
-        lazyLoad();
         return products;
     }
 
@@ -45,15 +44,6 @@ public class ProductPageIOS extends ProductPage {
     public SelectionPage clickSelectionButton() {
         selectorButton.click();
         return initPage(getDriver(), SelectionPage.class);
-    }
-
-    @Override
-    protected void lazyLoad() {
-        int i = 0;
-        while (i < products.size()) {
-            swipe(products.get(i));
-            i++;
-        }
     }
 
     @Override
