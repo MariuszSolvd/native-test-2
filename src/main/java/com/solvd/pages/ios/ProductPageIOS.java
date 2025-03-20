@@ -41,7 +41,7 @@ public class ProductPageIOS extends ProductPage {
     }
 
     @Override
-    public void clickSelectorButton() {
+    public void clickSelectionButton() {
         selectorButton.click();
     }
 
