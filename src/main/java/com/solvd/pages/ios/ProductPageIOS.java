@@ -1,6 +1,7 @@
 package com.solvd.pages.ios;
 
 import com.solvd.pages.common.ProductPage;
+import com.solvd.pages.common.SelectionPage;
 import com.solvd.pages.common.elements.Footer;
 import com.solvd.pages.common.elements.Header;
 import com.solvd.pages.common.elements.Product;
@@ -41,8 +42,9 @@ public class ProductPageIOS extends ProductPage {
     }
 
     @Override
-    public void clickSelectionButton() {
+    public SelectionPage clickSelectionButton() {
         selectorButton.click();
+        return initPage(getDriver(), SelectionPage.class);
     }
 
     @Override
