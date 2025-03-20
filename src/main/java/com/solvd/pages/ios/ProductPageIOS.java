@@ -34,7 +34,17 @@ public class ProductPageIOS extends ProductPage {
 
     @Override
     public List<? extends Product> getProducts() {
+        lazyLoad();
         return products;
+    }
+
+    @Override
+    protected void lazyLoad() {
+        int i = 0;
+        while (!footerIOS.isDisplayed()) {
+            swipe(products.get(i));
+            i += 2;
+        }
     }
 
     @Override
