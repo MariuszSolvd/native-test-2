@@ -24,19 +24,19 @@ public class ProductIOS extends Product {
 
     @Override
     public String getNameText() {
-        swipeToProduct();
+        swipeToElement(nameElement);
         return nameElement.getText();
     }
 
     @Override
     public BigDecimal getPrice() {
-        swipeToProduct();
+        swipeToElement(priceElement);
         return new BigDecimal(priceElement.getText().replace("$", ""));
     }
 
     @Override
     public void clickAddToCart() {
-        swipeToProduct();
+        swipeToElement(addToCart);
         addToCart.click();
     }
 }
