@@ -1,14 +1,17 @@
 package com.solvd.pages.common;
 
+import com.solvd.pages.common.elements.Footer;
 import com.solvd.pages.common.elements.Header;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
-public abstract class HeaderPage extends AbstractPage {
+public abstract class CommonPage extends AbstractPage {
 
-    public HeaderPage(WebDriver driver) {
+    public CommonPage(WebDriver driver) {
         super(driver);
     }
 
     public abstract Header getHeader();
+
+    public abstract Footer getFooter();
 }
