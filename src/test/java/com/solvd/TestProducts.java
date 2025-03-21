@@ -43,4 +43,17 @@ public class TestProducts extends AbstractTest {
         assertEquals(sortedProducts, afterSortList);
     }
 
+    @Test
+    public void sortPriceLowToHigh() {
+        ProductPage productPage = LoginService.login();
+        List<ProductEnt> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
+                .stream().sorted(Comparator.comparing(ProductEnt::price))
+                .toList();
+        SelectionPage selectionPage = productPage.clickSelectionButton();
+        productPage = selectionPage.sortPriceLowToHigh();
+        productPage.backToFirstProduct();
+        List<ProductEnt> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
+        assertEquals(sortedProducts, afterSortList);
+    }
+
 }
