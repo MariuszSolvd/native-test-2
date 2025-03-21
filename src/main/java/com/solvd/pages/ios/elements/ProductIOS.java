@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 
 public class ProductIOS extends Product {
 
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeImage")
+    private ExtendedWebElement image;
     @ExtendedFindBy(iosPredicate = "name == \"test-Item title\"")
     private ExtendedWebElement nameElement;
     @ExtendedFindBy(iosPredicate = "name == \"test-Price\"")
@@ -20,6 +22,12 @@ public class ProductIOS extends Product {
 
     public ProductIOS(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
+    }
+
+    @Override
+    public String getImage() {
+        swipeToElement(image);
+        return image.getAttribute("name");
     }
 
     @Override

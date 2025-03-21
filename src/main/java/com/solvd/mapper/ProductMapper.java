@@ -14,6 +14,6 @@ public final class ProductMapper {
     }
 
     public static ProductEnt mapToProductEnt (Product product) {
-        return new ProductEnt(product.getNameText(), product.getPrice());
+        return new ProductEnt(product.getImage(), product.getNameText(), product.getPrice());
     }
 }

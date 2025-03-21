@@ -14,6 +14,8 @@ public abstract class Product extends AbstractUIObject implements IMobileUtils {
         super(driver, searchContext);
     }
 
+    public abstract String getImage();
+
     public abstract String getNameText();
 
     public abstract BigDecimal getPrice();
