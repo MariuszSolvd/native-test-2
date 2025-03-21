@@ -34,7 +34,7 @@ public class SelectionPageIOS extends SelectionPage {
 
     @Override
     public ProductPage sortZtoAButton() {
-        sortAtoZButton.click();
+        sortZtoAButton.click();
         return getBackToProductPage();
     }
 
