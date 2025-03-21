@@ -15,8 +15,4 @@ public abstract class CommonPage extends AbstractPage implements IMobileUtils {
     public abstract Header getHeader();
 
     public abstract Footer getFooter();
-
-    protected void swipeToUp() {
-        swipe(getHeader());
-    }
 }
