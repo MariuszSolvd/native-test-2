@@ -32,4 +32,17 @@ public class TestProducts extends AbstractTest {
         assertEquals(sortedProducts, afterSortList);
     }
 
+    @Test
+    public void sortProductsZtoA() {
+        ProductPage productPage = LoginService.login();
+        List<ProductEnt> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
+                .stream().sorted(Comparator.comparing(ProductEnt::name).reversed())
+                .toList();
+        SelectionPage selectionPage = productPage.clickSelectionButton();
+        productPage = selectionPage.sortZtoAButton();
+        productPage.backToFirstProduct();
+        List<ProductEnt> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
+        assertEquals(sortedProducts, afterSortList);
+    }
+
 }
