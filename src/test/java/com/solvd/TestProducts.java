@@ -14,6 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class TestProducts extends AbstractTest {
 
@@ -105,7 +106,17 @@ public class TestProducts extends AbstractTest {
         }
     }
 
-
+    @Test
+    public void checkAddCartForDetailProductPage() {
+        ProductPage productPage = LoginService.login();
+        List<? extends Product> products = productPage.getProducts();
+        for (Product product : products) {
+            product.clickAddToCart();
+            ProductDetailPage productDetailPage = product.clickOnProduct();
+            assertTrue(productDetailPage.getRemoveFromCartButton().isDisplayed());
+            productDetailPage.backToProductPage();
+        }
+    }
 
 
 
