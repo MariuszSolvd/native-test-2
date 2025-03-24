@@ -16,7 +16,7 @@ public abstract class ProductPage extends CommonPage implements IMobileUtils {
 
     public abstract SelectionPage clickSelectionButton();
 
-    public abstract CartPage cartButton();
+    public abstract CartPage clickCartButton();
 
     public void backToFirstProduct() {
         swipe(getProducts().getFirst(), Direction.DOWN);

@@ -50,7 +50,7 @@ public class ProductPageIOS extends ProductPage {
     }
 
     @Override
-    public CartPage cartButton() {
+    public CartPage clickCartButton() {
         cartButton.click();
         return initPage(getDriver(), CartPage.class);
     }
