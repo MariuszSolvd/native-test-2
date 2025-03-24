@@ -1,5 +1,6 @@
 package com.solvd.pages.common;
 
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,10 @@ public abstract class ProductDetailPage extends AbstractPage {
     public abstract BigDecimal getPrice();
 
     public abstract void clickAddToCartButton();
+
+    public abstract void clickRemoveFromCartButton();
+
+    public abstract ExtendedWebElement getRemoveFromCartButton();
 
     public abstract void clickOnBackToProduct();
 

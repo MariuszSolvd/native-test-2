@@ -19,6 +19,8 @@ public class ProductDetailPageIOS extends ProductDetailPage {
     ExtendedWebElement price;
     @ExtendedFindBy(iosPredicate = "name == \"test-ADD TO CART\"")
     ExtendedWebElement addToCartButton;
+    @ExtendedFindBy(iosPredicate = "name == \"test-REMOVE\"")
+    ExtendedWebElement removeFromCartButton;
     @ExtendedFindBy(iosPredicate = "name == \"test-BACK TO PRODUCTS\"")
     ExtendedWebElement backToProductButton;
 
@@ -46,6 +48,16 @@ public class ProductDetailPageIOS extends ProductDetailPage {
     public void clickAddToCartButton() {
         addToCartButton.click();
 
+    }
+
+    @Override
+    public void clickRemoveFromCartButton() {
+        removeFromCartButton.click();
+    }
+
+    @Override
+    public ExtendedWebElement getRemoveFromCartButton() {
+        return removeFromCartButton;
     }
 
     @Override
