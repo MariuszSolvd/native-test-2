@@ -21,8 +21,6 @@ public class ProductIOS extends Product {
     private ExtendedWebElement addToCart;
     @ExtendedFindBy(iosPredicate = "name == \"REMOVE\"")
     private ExtendedWebElement removeFromCart;
-    @ExtendedFindBy(iosPredicate = "name == \"test-Cart\"")
-    private ExtendedWebElement cartButton;
 
 
     public ProductIOS(WebDriver driver, SearchContext searchContext) {
@@ -58,11 +56,5 @@ public class ProductIOS extends Product {
         swipeToElement(removeFromCart);
         removeFromCart.click();
 
-    }
-
-    @Override
-    public CartPage cartButton() {
-        cartButton.click();
-        return initPage(getDriver(), CartPage.class);
     }
 }

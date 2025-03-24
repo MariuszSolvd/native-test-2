@@ -1,5 +1,6 @@
 package com.solvd.pages.ios;
 
+import com.solvd.pages.common.CartPage;
 import com.solvd.pages.common.ProductPage;
 import com.solvd.pages.common.SelectionPage;
 import com.solvd.pages.common.elements.Footer;
@@ -29,6 +30,8 @@ public class ProductPageIOS extends ProductPage {
     private List<ProductIOS> products;
     @ExtendedFindBy(iosPredicate = "name == \"test-Modal Selector Button\"")
     private ExtendedWebElement selectorButton;
+    @ExtendedFindBy(iosPredicate = "name == \"test-Cart\"")
+    private ExtendedWebElement cartButton;
 
     public ProductPageIOS(WebDriver driver) {
         super(driver);
@@ -44,6 +47,12 @@ public class ProductPageIOS extends ProductPage {
     public SelectionPage clickSelectionButton() {
         selectorButton.click();
         return initPage(getDriver(), SelectionPage.class);
+    }
+
+    @Override
+    public CartPage cartButton() {
+        cartButton.click();
+        return initPage(getDriver(), CartPage.class);
     }
 
     @Override
