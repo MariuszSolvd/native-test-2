@@ -56,6 +56,11 @@ public class ProductPageIOS extends ProductPage {
     }
 
     @Override
+    public int getCartProductNumber() {
+        return Integer.parseInt(cartButton.getAttribute("label"));
+    }
+
+    @Override
     public Header getHeader() {
         return headerIOS;
     }
