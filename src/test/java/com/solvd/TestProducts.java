@@ -82,7 +82,17 @@ public class TestProducts extends AbstractTest {
             assertEquals(productEnt, productDetail);
             productDetailPage.clickOnBackToProduct();
         }
+    }
 
+    @Test
+    public void checkAddToCartAgainstCarButton() {
+        ProductPage productPage = LoginService.login();
+        List<? extends Product> products = productPage.getProducts();
+        for (Product product : products) {
+            product.clickAddToCart();
+            assertEquals(productPage.getCartProductNumber(), 1);
+            product.clickRemoveFromCart();
+        }
     }
 
 
