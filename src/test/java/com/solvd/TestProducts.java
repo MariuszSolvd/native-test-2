@@ -2,6 +2,7 @@ package com.solvd;
 
 import com.solvd.enitiy.ProductEnt;
 import com.solvd.mapper.ProductMapper;
+import com.solvd.pages.common.ProductDetailPage;
 import com.solvd.pages.common.ProductPage;
 import com.solvd.pages.common.SelectionPage;
 import com.solvd.pages.common.elements.Product;
@@ -69,5 +70,23 @@ public class TestProducts extends AbstractTest {
         List<ProductEnt> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
         assertEquals(sortedProducts, afterSortList);
     }
+
+    @Test
+    public void checkProductsDetailsCompliance() {
+        ProductPage productPage = LoginService.login();
+        List<? extends Product> products = productPage.getProducts();
+        for (Product product : products) {
+            ProductEnt productEnt = ProductMapper.mapToProductEnt(product);
+            ProductDetailPage productDetailPage = product.clickOnProduct();
+            ProductEnt productDetail = ProductMapper.mapToProductEnt(productDetailPage);
+            assertEquals(productEnt, productDetail);
+            productDetailPage.clickOnBackToProduct();
+        }
+
+    }
+
+
+
+
 
 }
