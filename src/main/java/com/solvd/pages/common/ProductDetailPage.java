@@ -18,4 +18,11 @@ public abstract class ProductDetailPage extends AbstractPage {
     public abstract BigDecimal getPrice();
 
     public abstract void clickAddToCartButton();
+
+    public abstract void clickOnBackToProduct();
+
+    public ProductPage backToProductPage() {
+        clickOnBackToProduct();
+        return initPage(getDriver(), ProductPage.class);
+    }
 }
