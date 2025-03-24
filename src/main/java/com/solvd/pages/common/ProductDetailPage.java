@@ -11,6 +11,8 @@ public abstract class ProductDetailPage extends AbstractPage {
         super(driver);
     }
 
+    public abstract String getImage();
+
     public abstract String getName();
 
     public abstract BigDecimal getPrice();
