@@ -1,6 +1,7 @@
 package com.solvd.mapper;
 
 import com.solvd.enitiy.ProductEnt;
+import com.solvd.pages.common.ProductDetailPage;
 import com.solvd.pages.common.elements.Product;
 
 import java.util.List;
@@ -15,5 +16,9 @@ public final class ProductMapper {
 
     public static ProductEnt mapToProductEnt (Product product) {
         return new ProductEnt(product.getImage(), product.getNameText(), product.getPrice());
+    }
+
+    public static ProductEnt mapToProductEnt(ProductDetailPage productDetailPage) {
+        return new ProductEnt(productDetailPage.getImage(), productDetailPage.getName(), productDetailPage.getPrice());
     }
 }
