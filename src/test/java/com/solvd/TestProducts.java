@@ -95,6 +95,18 @@ public class TestProducts extends AbstractTest {
         }
     }
 
+    @Test
+    public void checkAddToCartAgainstCarButtonIteration(){
+        ProductPage productPage = LoginService.login();
+        List<? extends Product> products = productPage.getProducts();
+        for (int i = 0; i < products.size(); i++) {
+            products.get(i).clickAddToCart();
+            assertEquals(productPage.getCartProductNumber(), i + 1);
+        }
+    }
+
+
+
 
 
 
