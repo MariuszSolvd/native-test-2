@@ -3,6 +3,7 @@
     <test name="Login Tests">
         <classes>
             <class name="com.solvd.TestLogin"/>
+            <class name="com.solvd.TestProducts"/>
         </classes>
     </test>
 </suite>
