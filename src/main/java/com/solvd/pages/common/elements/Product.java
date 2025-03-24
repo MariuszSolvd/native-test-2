@@ -1,5 +1,6 @@
 package com.solvd.pages.common.elements;
 
+import com.solvd.pages.common.CartPage;
 import com.solvd.pages.common.ProductDetailPage;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -24,6 +25,8 @@ public abstract class Product extends AbstractUIObject implements IMobileUtils {
     public abstract void clickAddToCart();
 
     public abstract void clickRemoveFromCart();
+
+    public abstract CartPage cartButton();
 
     public ProductDetailPage clickOnProduct() {
         this.click();

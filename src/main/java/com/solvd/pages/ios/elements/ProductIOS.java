@@ -1,5 +1,6 @@
 package com.solvd.pages.ios.elements;
 
+import com.solvd.pages.common.CartPage;
 import com.solvd.pages.common.elements.Product;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -20,6 +21,8 @@ public class ProductIOS extends Product {
     private ExtendedWebElement addToCart;
     @ExtendedFindBy(iosPredicate = "name == \"REMOVE\"")
     private ExtendedWebElement removeFromCart;
+    @ExtendedFindBy(iosPredicate = "name == \"test-Cart\"")
+    private ExtendedWebElement cartButton;
 
 
     public ProductIOS(WebDriver driver, SearchContext searchContext) {
@@ -55,5 +58,11 @@ public class ProductIOS extends Product {
         swipeToElement(removeFromCart);
         removeFromCart.click();
 
+    }
+
+    @Override
+    public CartPage cartButton() {
+        cartButton.click();
+        return initPage(getDriver(), CartPage.class);
     }
 }
