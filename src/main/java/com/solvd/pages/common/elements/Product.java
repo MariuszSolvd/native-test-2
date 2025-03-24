@@ -23,6 +23,8 @@ public abstract class Product extends AbstractUIObject implements IMobileUtils {
 
     public abstract void clickAddToCart();
 
+    public abstract void clickRemoveFromCart();
+
     public ProductDetailPage clickOnProduct() {
         this.click();
         return initPage(getDriver(), ProductDetailPage.class);
