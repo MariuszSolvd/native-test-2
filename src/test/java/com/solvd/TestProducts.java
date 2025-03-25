@@ -92,7 +92,7 @@ public class TestProducts extends AbstractTest {
         List<? extends Product> products = productPage.getProducts();
         for (Product product : products) {
             product.clickAddToCart();
-            assertEquals(productPage.getCartProductNumber(), 1);
+            assertEquals(productPage.getHeader().getCartProductNumber(), 1);
             product.clickRemoveFromCart();
         }
     }
@@ -103,7 +103,7 @@ public class TestProducts extends AbstractTest {
         List<? extends Product> products = productPage.getProducts();
         for (int i = 0; i < products.size(); i++) {
             products.get(i).clickAddToCart();
-            assertEquals(productPage.getCartProductNumber(), i + 1);
+            assertEquals(productPage.getHeader().getCartProductNumber(), i + 1);
         }
     }
 
@@ -128,11 +128,7 @@ public class TestProducts extends AbstractTest {
         }
         MenuPage menuPage = productPage.getHeader().clickHamburgerMenu();
         productPage = menuPage.clickResetApp();
-        assertEquals(productPage.getCartProductNumber(), 0);
+        assertEquals(productPage.getHeader().getCartProductNumber(), 0);
     }
-
-
-
-
 
 }
