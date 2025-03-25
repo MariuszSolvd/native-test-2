@@ -4,10 +4,10 @@ import com.solvd.pages.common.ProductPage;
 import com.solvd.pages.common.SelectionPage;
 import com.solvd.pages.common.elements.Footer;
 import com.solvd.pages.common.elements.Header;
-import com.solvd.pages.common.elements.Product;
+import com.solvd.pages.common.elements.ExtendedProduct;
 import com.solvd.pages.ios.elements.FooterIOS;
 import com.solvd.pages.ios.elements.HeaderIOS;
-import com.solvd.pages.ios.elements.ProductIOS;
+import com.solvd.pages.ios.elements.ExtendedProductIOS;
 import com.solvd.utilis.Constants;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -26,7 +26,7 @@ public class ProductPageIOS extends ProductPage {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name == \"PRODUCTS\"`]")
     private ExtendedWebElement productText;
     @ExtendedFindBy(iosPredicate = "name == \"test-Item\"")
-    private List<ProductIOS> products;
+    private List<ExtendedProductIOS> products;
     @ExtendedFindBy(iosPredicate = "name == \"test-Modal Selector Button\"")
     private ExtendedWebElement selectorButton;
 
@@ -36,7 +36,7 @@ public class ProductPageIOS extends ProductPage {
     }
 
     @Override
-    public List<? extends Product> getProducts() {
+    public List<? extends ExtendedProduct> getProducts() {
         return products;
     }
 

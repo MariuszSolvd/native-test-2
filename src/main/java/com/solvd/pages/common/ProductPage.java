@@ -1,6 +1,6 @@
 package com.solvd.pages.common;
 
-import com.solvd.pages.common.elements.Product;
+import com.solvd.pages.common.elements.ExtendedProduct;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.WebDriver;
 
@@ -12,7 +12,7 @@ public abstract class ProductPage extends CommonPage implements IMobileUtils {
         super(driver);
     }
 
-    public abstract List<? extends Product> getProducts();
+    public abstract List<? extends ExtendedProduct> getProducts();
 
     public abstract SelectionPage clickSelectionButton();
 
