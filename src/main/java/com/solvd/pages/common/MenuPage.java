@@ -12,4 +12,6 @@ public abstract class MenuPage extends AbstractPage {
     public abstract void clickButton(int buttonNumber);
 
     public abstract LoginPage clickLogout();
+
+    public abstract ProductPage clickResetApp();
 }
