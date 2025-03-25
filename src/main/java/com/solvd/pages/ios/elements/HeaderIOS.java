@@ -1,5 +1,6 @@
 package com.solvd.pages.ios.elements;
 
+import com.solvd.pages.common.CartPage;
 import com.solvd.pages.common.MenuPage;
 import com.solvd.pages.common.elements.Header;
 import com.zebrunner.carina.utils.factory.DeviceType;
@@ -30,8 +31,14 @@ public class HeaderIOS extends Header {
     }
 
     @Override
-    public void clickCart() {
+    public ExtendedWebElement getCartButton() {
+        return cartButton;
+    }
+
+    @Override
+    public CartPage clickCart() {
         clickIOS(cartButton);
+        return initPage(getDriver(), CartPage.class);
     }
 
     private void clickIOS(ExtendedWebElement element) {
