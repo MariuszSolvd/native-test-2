@@ -1,24 +1,24 @@
 package com.solvd.mapper;
 
-import com.solvd.enitiy.ProductEnt;
+import com.solvd.enitiy.ProductWithImage;
 import com.solvd.pages.common.ProductDetailPage;
-import com.solvd.pages.common.elements.Product;
+import com.solvd.pages.common.elements.ExtendedProduct;
 
 import java.util.List;
 
 public final class ProductMapper {
 
-    public static List<ProductEnt> mapAllToProductEnt(List<? extends Product> products) {
+    public static List<ProductWithImage> mapAllToProductEnt(List<? extends ExtendedProduct> products) {
         return products.stream()
                 .map(ProductMapper::mapToProductEnt)
                 .toList();
     }
 
-    public static ProductEnt mapToProductEnt (Product product) {
-        return new ProductEnt(product.getImage(), product.getNameText(), product.getPrice());
+    public static ProductWithImage mapToProductEnt (ExtendedProduct extendedProduct) {
+        return new ProductWithImage(extendedProduct.getImage(), extendedProduct.getNameText(), extendedProduct.getPrice());
     }
 
-    public static ProductEnt mapToProductEnt(ProductDetailPage productDetailPage) {
-        return new ProductEnt(productDetailPage.getImage(), productDetailPage.getName(), productDetailPage.getPrice());
+    public static ProductWithImage mapToProductEnt(ProductDetailPage productDetailPage) {
+        return new ProductWithImage(productDetailPage.getImage(), productDetailPage.getName(), productDetailPage.getPrice());
     }
 }
