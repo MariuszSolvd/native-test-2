@@ -2,6 +2,7 @@ package com.solvd;
 
 import com.solvd.enitiy.ProductEnt;
 import com.solvd.mapper.ProductMapper;
+import com.solvd.pages.common.MenuPage;
 import com.solvd.pages.common.ProductDetailPage;
 import com.solvd.pages.common.ProductPage;
 import com.solvd.pages.common.SelectionPage;
@@ -116,6 +117,18 @@ public class TestProducts extends AbstractTest {
             assertTrue(productDetailPage.getRemoveFromCartButton().isDisplayed());
             productDetailPage.backToProductPage();
         }
+    }
+
+    @Test
+    public void shouldRestartPickedProducts() {
+        ProductPage productPage = LoginService.login();
+        List<? extends Product> products = productPage.getProducts();
+        for (Product product : products) {
+            product.clickAddToCart();
+        }
+        MenuPage menuPage = productPage.getHeader().clickHamburgerMenu();
+        productPage = menuPage.clickResetApp();
+        assertEquals(productPage.getCartProductNumber(), 0);
     }
 
 
