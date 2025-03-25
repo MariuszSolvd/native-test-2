@@ -57,7 +57,13 @@ public class ProductPageIOS extends ProductPage {
 
     @Override
     public int getCartProductNumber() {
-        return Integer.parseInt(cartButton.getAttribute("label"));
+        int result;
+        try {
+            result = Integer.parseInt(cartButton.getAttribute("label"));
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+        return result;
     }
 
     @Override
