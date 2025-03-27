@@ -19,10 +19,10 @@ public class TestLogin extends AbstractTest {
         assertEquals(loginPage.getErrorName(), "Username and password do not match any user in this service.");
     }
 
-    @Test
-    public void shouldLogin() {
+    @Test(dataProvider = "correctLoginData", dataProviderClass = TestDataProviders.class)
+    public void shouldLogin(String username, String password) {
         LoginPage loginPage = initPage(getDriver(), LoginPage.class);
-        ProductPage productPage = loginPage.login(R.TESTDATA.get("user.standard"), R.TESTDATA.get("user.password"));
+        ProductPage productPage = loginPage.login(username, password);
         assertTrue(productPage.isPageOpened());
     }
 

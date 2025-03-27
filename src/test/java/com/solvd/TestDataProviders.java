@@ -12,4 +12,13 @@ public class TestDataProviders {
                 {"problem", "bad"}
         };
     }
+
+    @DataProvider(name = "correctLoginData")
+    public Object[][] correctLoginCredentials() {
+        String password = "secret_sauce";
+        return new Object[][] {
+                {"standard_user", password},
+                {"problem_user", password}
+        };
+    }
 }
