@@ -12,10 +12,10 @@ import static org.testng.Assert.assertTrue;
 
 public class TestLogin extends AbstractTest {
 
-    @Test
-    public void shouldNotLoginIncorrectCredentials() {
+    @Test(dataProvider = "wrongLoginData", dataProviderClass = TestDataProviders.class)
+    public void shouldNotLoginIncorrectCredentials(String username, String password) {
         LoginPage loginPage = initPage(getDriver(), LoginPage.class);
-        loginPage.login("standard", "wrong");
+        loginPage.login(username, password);
         assertEquals(loginPage.getErrorName(), "Username and password do not match any user in this service.");
     }
 
