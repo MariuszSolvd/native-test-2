@@ -1,4 +1,4 @@
-package com.solvd;
+package com.solvd.tests;
 
 import com.solvd.pages.common.CartPage;
 import com.solvd.pages.common.ProductPage;

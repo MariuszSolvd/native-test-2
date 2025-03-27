@@ -1,4 +1,4 @@
-package com.solvd;
+package com.solvd.data;
 
 import org.testng.annotations.DataProvider;
 

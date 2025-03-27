@@ -1,12 +1,12 @@
-package com.solvd;
+package com.solvd.tests;
 
-import com.solvd.enitiy.ProductEnt;
+import com.solvd.enitiy.ProductWithImage;
 import com.solvd.mapper.ProductMapper;
 import com.solvd.pages.common.MenuPage;
 import com.solvd.pages.common.ProductDetailPage;
 import com.solvd.pages.common.ProductPage;
 import com.solvd.pages.common.SelectionPage;
-import com.solvd.pages.common.elements.Product;
+import com.solvd.pages.common.elements.ExtendedProduct;
 import com.solvd.service.LoginService;
 import com.zebrunner.carina.core.AbstractTest;
 import org.testng.annotations.Test;
@@ -22,66 +22,66 @@ public class TestProducts extends AbstractTest {
     @Test
     public void sortProductsAtoZ() {
         ProductPage productPage = LoginService.login();
-        List<ProductEnt> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
+        List<ProductWithImage> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
                 .stream()
-                .sorted(Comparator.comparing(ProductEnt::name))
+                .sorted(Comparator.comparing(ProductWithImage::name))
                 .toList();
         SelectionPage selectionPage = productPage.clickSelectionButton();
         productPage = selectionPage.sortAtoZButton();
         productPage.backToFirstProduct();
-        List<ProductEnt> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
+        List<ProductWithImage> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
         assertEquals(sortedProducts, afterSortList);
     }
 
     @Test
     public void sortProductsZtoA() {
         ProductPage productPage = LoginService.login();
-        List<ProductEnt> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
-                .stream().sorted(Comparator.comparing(ProductEnt::name).reversed())
+        List<ProductWithImage> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
+                .stream().sorted(Comparator.comparing(ProductWithImage::name).reversed())
                 .toList();
         SelectionPage selectionPage = productPage.clickSelectionButton();
         productPage = selectionPage.sortZtoAButton();
         productPage.backToFirstProduct();
-        List<ProductEnt> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
+        List<ProductWithImage> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
         assertEquals(sortedProducts, afterSortList);
     }
 
     @Test
     public void sortPriceLowToHigh() {
         ProductPage productPage = LoginService.login();
-        List<ProductEnt> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
-                .stream().sorted(Comparator.comparing(ProductEnt::price))
+        List<ProductWithImage> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
+                .stream().sorted(Comparator.comparing(ProductWithImage::price))
                 .toList();
         SelectionPage selectionPage = productPage.clickSelectionButton();
         productPage = selectionPage.sortPriceLowToHigh();
         productPage.backToFirstProduct();
-        List<ProductEnt> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
+        List<ProductWithImage> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
         assertEquals(sortedProducts, afterSortList);
     }
 
     @Test
     public void sortPriceHighToLow() {
         ProductPage productPage = LoginService.login();
-        List<ProductEnt> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
-                .stream().sorted(Comparator.comparing(ProductEnt::price).reversed()
-                        .thenComparing(ProductEnt::name, Comparator.reverseOrder()))
+        List<ProductWithImage> sortedProducts = ProductMapper.mapAllToProductEnt(productPage.getProducts())
+                .stream().sorted(Comparator.comparing(ProductWithImage::price).reversed()
+                        .thenComparing(ProductWithImage::name, Comparator.reverseOrder()))
                 .toList();
         SelectionPage selectionPage = productPage.clickSelectionButton();
         productPage = selectionPage.sortPriceHighToLow();
         productPage.backToFirstProduct();
-        List<ProductEnt> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
+        List<ProductWithImage> afterSortList = ProductMapper.mapAllToProductEnt(productPage.getProducts());
         assertEquals(sortedProducts, afterSortList);
     }
 
     @Test
     public void checkProductsDetailsCompliance() {
         ProductPage productPage = LoginService.login();
-        List<? extends Product> products = productPage.getProducts();
-        for (Product product : products) {
-            ProductEnt productEnt = ProductMapper.mapToProductEnt(product);
-            ProductDetailPage productDetailPage = product.clickOnProduct();
-            ProductEnt productDetail = ProductMapper.mapToProductEnt(productDetailPage);
-            assertEquals(productEnt, productDetail);
+        List<? extends ExtendedProduct> products = productPage.getProducts();
+        for (ExtendedProduct extendedProduct : products) {
+            ProductWithImage productWithImage = ProductMapper.mapToProductEnt(extendedProduct);
+            ProductDetailPage productDetailPage = extendedProduct.clickOnProduct();
+            ProductWithImage productDetail = ProductMapper.mapToProductEnt(productDetailPage);
+            assertEquals(productWithImage, productDetail);
             productDetailPage.clickOnBackToProduct();
         }
     }
@@ -89,18 +89,18 @@ public class TestProducts extends AbstractTest {
     @Test
     public void checkAddToCartAgainstCarButton() {
         ProductPage productPage = LoginService.login();
-        List<? extends Product> products = productPage.getProducts();
-        for (Product product : products) {
-            product.clickAddToCart();
+        List<? extends ExtendedProduct> products = productPage.getProducts();
+        for (ExtendedProduct extendedProduct : products) {
+            extendedProduct.clickAddToCart();
             assertEquals(productPage.getHeader().getCartProductNumber(), 1);
-            product.clickRemoveFromCart();
+            extendedProduct.clickRemoveFromCart();
         }
     }
 
     @Test
     public void checkAddToCartAgainstCarButtonIteration(){
         ProductPage productPage = LoginService.login();
-        List<? extends Product> products = productPage.getProducts();
+        List<? extends ExtendedProduct> products = productPage.getProducts();
         for (int i = 0; i < products.size(); i++) {
             products.get(i).clickAddToCart();
             assertEquals(productPage.getHeader().getCartProductNumber(), i + 1);
@@ -110,10 +110,10 @@ public class TestProducts extends AbstractTest {
     @Test
     public void checkAddCartForDetailProductPage() {
         ProductPage productPage = LoginService.login();
-        List<? extends Product> products = productPage.getProducts();
-        for (Product product : products) {
-            product.clickAddToCart();
-            ProductDetailPage productDetailPage = product.clickOnProduct();
+        List<? extends ExtendedProduct> products = productPage.getProducts();
+        for (ExtendedProduct extendedProduct : products) {
+            extendedProduct.clickAddToCart();
+            ProductDetailPage productDetailPage = extendedProduct.clickOnProduct();
             assertTrue(productDetailPage.getRemoveFromCartButton().isDisplayed());
             productDetailPage.backToProductPage();
         }
@@ -122,9 +122,9 @@ public class TestProducts extends AbstractTest {
     @Test
     public void shouldRestartPickedProducts() {
         ProductPage productPage = LoginService.login();
-        List<? extends Product> products = productPage.getProducts();
-        for (Product product : products) {
-            product.clickAddToCart();
+        List<? extends ExtendedProduct> products = productPage.getProducts();
+        for (ExtendedProduct extendedProduct : products) {
+            extendedProduct.clickAddToCart();
         }
         MenuPage menuPage = productPage.getHeader().clickHamburgerMenu();
         productPage = menuPage.clickResetApp();

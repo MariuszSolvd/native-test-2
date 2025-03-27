@@ -2,12 +2,12 @@
 <suite name="SwagLabs Test Suite">
     <test name="Login Tests">
         <classes>
-            <class name="com.solvd.TestLogin"/>
+            <class name="com.solvd.tests.TestLogin"/>
         </classes>
     </test>
     <test name="Product Page Test">
         <classes>
-            <class name="com.solvd.TestProducts"/>
+            <class name="com.solvd.tests.TestProducts"/>
         </classes>
     </test>
 </suite>

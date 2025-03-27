@@ -1,5 +1,6 @@
-package com.solvd;
+package com.solvd.tests;
 
+import com.solvd.data.TestDataProviders;
 import com.solvd.pages.common.LoginPage;
 import com.solvd.pages.common.MenuPage;
 import com.solvd.pages.common.ProductPage;
