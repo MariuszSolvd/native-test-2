@@ -24,11 +24,7 @@ pipeline {
 
         stage('Start Simulator') {
             steps{
-                sh '''
-                    xcrun simctl shutdown all
-                    xcrun simctl erase all
-                    xcrun simctl boot "iPhone 15 Pro Max"
-                '''
+                sh 'xcrun simctl boot "iPhone 15 Pro Max"'
             }
         }
 
